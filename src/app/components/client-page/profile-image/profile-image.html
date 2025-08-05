@@ -8,10 +8,10 @@
   <!-- Overlay de edición -->
   <!-- add a pencil icon that can be seen by the user to click on the image and trigger triggerFileInput function -->
   <div
-    class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+    class="absolute inset-0 bg-gray-300 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
     (click)="fileInput.click()"
   >
-    <i class="fas fa-pencil-alt text-white"></i>
+    <fa-icon [icon]="faPencilAlt" class="text-white"></fa-icon>
   </div>
   
   <!-- Input de archivo oculto -->
