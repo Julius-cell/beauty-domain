@@ -1,0 +1,5 @@
+<!-- Profile image component -->
+<cp-profile-image
+  [imageUrl]="(clientService | async)?.image"
+  (imageChange)="handleProfileImageChange($event)"
+></cp-profile-image>
