@@ -7,7 +7,6 @@ import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
   selector: 'cp-profile-image',
   imports: [FontAwesomeModule],
   templateUrl: './profile-image.html',
-  styleUrl: './profile-image.css'
 })
 export class ProfileImage {
   imageUrl = input<string>('defaultAvatar');
