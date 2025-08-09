@@ -1,20 +1,20 @@
-<div class="relative w-32 h-32 rounded-full overflow-hidden group shadow-md">
-  <img
-    [src]="imageUrl() || defaultAvatar"
-    alt="Foto de perfil"
-    class="w-full h-full object-cover"
-  />
+<div class="w-32">
+  <div class="h-32 rounded-full shadow-md overflow-hidden">
+    <img
+      [src]="imageUrl() || defaultAvatar"
+      alt="Foto de perfil"
+      class="w-full h-full object-cover"
+    />
+  </div>
 
-  <!-- Overlay de edición -->
-  <!-- add a pencil icon that can be seen by the user to click on the image and trigger triggerFileInput function -->
+  <!-- EDIT BUTTON -->
   <div
-    class="absolute inset-0 bg-gray-300 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+    class="inset-0 flex items-center justify-center mt-3"
     (click)="fileInput.click()"
   >
-    <fa-icon [icon]="faPencilAlt" class="text-white"></fa-icon>
+    <fa-icon [icon]="faPencilAlt" class="text-gray-500"></fa-icon>
   </div>
-  
-  <!-- Input de archivo oculto -->
+
   <input
     #fileInput
     type="file"
