@@ -1,13 +1,40 @@
-<cp-profile-image
-  [imageUrl]="(clientService | async)!.image"
-  (imageChange)="handleProfileImageChange($event)"
-></cp-profile-image>
+<main
+  class="min-h-screen bg-gradient-to-b from-pink-50 via-rose-50 to-pink-100 p-4"
+>
+  <div class="max-w-md mx-auto space-y-6">
+    <!-- Header con imagen de perfil -->
+    <header class="text-center pt-4">
+      <cp-profile-image
+        [imageUrl]="(clientService | async)!.image"
+        (imageChange)="handleProfileImageChange($event)"
+        class="inline-block"
+      ></cp-profile-image>
 
-<!-- HIGHLIGHT -->
-<cp-highlights
-  [highlights]="(clientService | async)?.highlights"
-></cp-highlights>
+      @if ((clientService | async)?.name) {
+      <h1 class="text-2xl font-bold text-black mt-4 mb-1">
+        {{ (clientService | async)!.name }}
+      </h1>
+      <p class="text-black text-sm font-medium">Perfil de Cliente</p>
+      }
+    </header>
 
-<cp-client-details
-  [details]="(clientService | async)!.details"
-></cp-client-details>
+    <!-- Sección de highlights -->
+    <section>
+      <cp-highlights
+        [highlights]="(clientService | async)?.highlights"
+      ></cp-highlights>
+    </section>
+
+    <!-- Sección de detalles -->
+    <section>
+      <cp-client-details
+        [details]="(clientService | async)!.details"
+      ></cp-client-details>
+    </section>
+
+    <!-- Footer opcional -->
+    <footer class="text-center pt-4 pb-8">
+      <div class="w-12 h-0.5 bg-rose-200 mx-auto rounded-full"></div>
+    </footer>
+  </div>
+</main>
