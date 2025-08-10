@@ -1,0 +1,33 @@
+<div class="grid grid-cols-2 gap-3">
+  <!-- Número de veces atendida -->
+  <div
+    class="bg-white p-3 rounded-xl shadow-sm border border-pink-50 text-center"
+  >
+    <div class="text-2xl font-bold text-black">
+      {{ highlights()?.timesAttended }}
+    </div>
+    <div class="text-xs text-black font-medium mt-1">Veces Atendida</div>
+  </div>
+
+  <!-- Gasto total -->
+  <div
+    class="bg-white p-3 rounded-xl shadow-sm border border-pink-50 text-center"
+  >
+    <div class="text-2xl font-bold text-black">
+      ${{ formatNumber(highlights()?.totalSpent ?? 0) }}
+    </div>
+    <div class="text-xs text-black font-medium mt-1">Gasto Total</div>
+  </div>
+
+  <!-- Highlights adicionales -->
+  @for (highlight of visibleHighlights; track highlight?.name) {
+  <div
+    class="bg-white p-3 rounded-xl shadow-sm border border-pink-50 text-center"
+  >
+    <div class="text-2xl font-bold text-black">{{ highlight?.value }}</div>
+    <div class="text-xs text-black font-medium mt-1">
+      {{ highlight?.name }}
+    </div>
+  </div>
+  }
+</div>

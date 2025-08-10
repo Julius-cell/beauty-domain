@@ -1,4 +1,10 @@
 <cp-profile-image
-  [imageUrl]="(clientService | async)?.image"
+  [imageUrl]="(clientService | async)!.image"
   (imageChange)="handleProfileImageChange($event)"
 ></cp-profile-image>
+
+
+<!-- HIGHLIGHT -->
+ <cp-highlights
+   [highlights]="(clientService | async)?.highlights"
+ ></cp-highlights>
