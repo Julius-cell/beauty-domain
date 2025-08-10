@@ -3,10 +3,11 @@ import { ClientService } from '../../services/client.service';
 import { ProfileImage } from './profile-image/profile-image';
 import { AsyncPipe } from '@angular/common';
 import { Highlights } from './highlights/highlights';
+import { Details } from './client-details/client-details';
 
 @Component({
   selector: 'app-client-page',
-  imports: [ProfileImage, Highlights, AsyncPipe],
+  imports: [ProfileImage, Highlights, Details, AsyncPipe],
   templateUrl: './client-page.html',
 })
 export class ClientPage {

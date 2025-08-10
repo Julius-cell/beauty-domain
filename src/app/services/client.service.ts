@@ -6,6 +6,7 @@ export interface Client {
   email: string;
   image: string;
   highlights: ClientHighlights;
+  details: ClientDetails;
 }
 
 export interface ClientHighlights {
@@ -17,6 +18,13 @@ export interface ClientHighlights {
 export interface ClientHighlight {
   name: string;
   value: string;
+}
+
+export interface ClientDetails {
+  email: string;
+  phone: string;
+  birthDate: string;
+  age: number;
 }
 
 @Injectable({
@@ -39,7 +47,13 @@ export class ClientService {
             additionalHighlights: [
               { name: 'Servicios Favoritos', value: 'Haircut' },
               // { name: 'Última Visita', value: '2025-05-15' },
-            ]
+            ],
+          },
+          details: {
+            email: 'maria.gonzalez@gmail.com',
+            phone: '+56 9 8765 4321',
+            birthDate: '1990-03-15',
+            age: 35,
           },
         });
       }, 2000);

@@ -3,8 +3,11 @@
   (imageChange)="handleProfileImageChange($event)"
 ></cp-profile-image>
 
-
 <!-- HIGHLIGHT -->
- <cp-highlights
-   [highlights]="(clientService | async)?.highlights"
- ></cp-highlights>
+<cp-highlights
+  [highlights]="(clientService | async)?.highlights"
+></cp-highlights>
+
+<cp-client-details
+  [details]="(clientService | async)!.details"
+></cp-client-details>

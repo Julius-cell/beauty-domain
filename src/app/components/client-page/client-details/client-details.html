@@ -1,0 +1,42 @@
+<section class="bg-white rounded-2xl shadow-sm border border-pink-100 p-4">
+  <h3 class="text-lg font-semibold text-black mb-4 text-center">
+    Detalles del Cliente
+  </h3>
+
+  <div class="relative grid grid-cols-2 gap-y-4 gap-x-5">
+    <!-- Línea divisora que ocupa toda la altura -->
+    <div
+      class="absolute left-1/2 top-0 bottom-0 w-px bg-gray-200 transform -translate-x-1/2"
+    ></div>
+
+    <!-- Columna izquierda -->
+    <div class="text-center">
+      <div class="text-xs text-black font-medium mb-1">Email</div>
+      <div class="text-sm text-gray-700 font-medium break-all">
+        {{ details().email }}
+      </div>
+    </div>
+
+    <div class="text-center">
+      <div class="text-xs text-black font-medium mb-1">Fecha de Nacimiento</div>
+      <div class="text-sm text-gray-700 font-medium">
+        {{ formatDate(details().birthDate) }}
+      </div>
+    </div>
+
+    <!-- Columna derecha -->
+    <div class="text-center">
+      <div class="text-xs text-black font-medium mb-1">Teléfono</div>
+      <div class="text-sm text-gray-700 font-medium">
+        {{ details().phone }}
+      </div>
+    </div>
+
+    <div class="text-center">
+      <div class="text-xs text-black font-medium mb-1">Edad</div>
+      <div class="text-sm text-gray-700 font-medium">
+        {{ details().age }} años
+      </div>
+    </div>
+  </div>
+</section>
