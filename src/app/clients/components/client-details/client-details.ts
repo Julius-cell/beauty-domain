@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { ClientDetails } from '../../../services/client.service';
+import { ClientDetails } from '../../models/client';
 
 @Component({
   selector: 'cp-client-details',

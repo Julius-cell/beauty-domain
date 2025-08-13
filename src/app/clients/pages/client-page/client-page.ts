@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { ClientService } from '../../services/client.service';
-import { ProfileImage } from './profile-image/profile-image';
+import { ProfileImage } from '../../components/profile-image/profile-image';
 import { AsyncPipe } from '@angular/common';
-import { Highlights } from './highlights/highlights';
-import { Details } from './client-details/client-details';
+import { Highlights } from '../../components/highlights/highlights';
+import { Details } from '../../components/client-details/client-details';
 
 @Component({
   selector: 'app-client-page',

@@ -1,8 +1,5 @@
 import { Component, input } from '@angular/core';
-import {
-  ClientHighlight,
-  ClientHighlights,
-} from '../../../services/client.service';
+import { ClientHighlight, ClientHighlights } from '../../models/client';
 
 @Component({
   selector: 'cp-highlights',
