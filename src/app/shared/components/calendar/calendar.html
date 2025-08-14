@@ -1,0 +1,117 @@
+<div class="appointment-calendar">
+  <div class="calendar-header">
+    <h2>Appointment Calendar</h2>
+    <div class="navigation">
+      <button (click)="previousMonth()" class="nav-btn">‹</button>
+      <span class="month-year">{{ currentDate | date : "MMMM yyyy" }}</span>
+      <button (click)="nextMonth()" class="nav-btn">›</button>
+    </div>
+  </div>
+
+  <div class="calendar-container">
+    <!-- Calendar Grid -->
+    <div class="calendar-grid">
+      <div class="weekdays">
+        @for (item of weekDays; track $index) {
+        <div class="weekday">{{ item }}</div>
+        }
+      </div>
+
+      <div class="days">
+        @for (day of calendarDays; track $index) {
+        <div
+          class="day"
+          [class.other-month]="!day.currentMonth"
+          [class.today]="day.isToday"
+          [class.selected]="day.isSelected"
+          [class.has-appointments]="day.hasAppointments"
+          (click)="selectDate(day.date)"
+        >
+          <span class="day-number">{{ day.date.getDate() }}</span>
+          @if (day.hasAppointments > 0) {
+          <div class="appointment-indicator">
+            {{ day.appointmentCount }}
+          </div>
+          }
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- Time Slots Panel -->
+    @if (selectedDate) {
+    <div class="time-slots-panel">
+      <h3>Available Times - {{ selectedDate | date : "mediumDate" }}</h3>
+
+      <div class="time-slots">
+        @for (slot of availableTimeSlots; track $index) {
+        <div
+          class="time-slot"
+          [class.booked]="slot.booked"
+          [class.available]="slot.available && !slot.booked"
+          (click)="slot.available && !slot.booked && selectTimeSlot(slot)"
+        >
+          <span class="time">{{ slot.time }}</span>
+          @if (slot.booked) {
+          <span class="status">Booked</span>
+          } @if (!slot.available) {
+          <span class="status">Unavailable</span>
+          }
+        </div>
+        }
+      </div>
+
+      <!-- Booking Form -->
+      @if (selectedTimeSlot) {
+      <div class="booking-form">
+        <h4>Book Appointment</h4>
+        <p>
+          {{ selectedDate | date : "mediumDate" }} at
+          {{ selectedTimeSlot.time }}
+        </p>
+
+        <div class="form-group">
+          <label for="clientName">Client Name:</label>
+          <input
+            type="text"
+            id="clientName"
+            [(ngModel)]="clientName"
+            placeholder="Enter client name"
+          />
+        </div>
+
+        <div class="form-actions">
+          <button
+            (click)="bookAppointment()"
+            class="book-btn"
+            [disabled]="!clientName"
+          >
+            Book Appointment
+          </button>
+          <button (click)="cancelBooking()" class="cancel-btn">Cancel</button>
+        </div>
+      </div>
+      }
+    </div>
+    }
+  </div>
+
+  <!-- Appointments List -->
+  @if (appointments.length > 0) {
+  <div class="appointments-list">
+    <h3>Upcoming Appointments</h3>
+    @for (appointment of upcomingAppointments; track $index) {
+    <div class="appointment-item">
+      <div class="appointment-info">
+        <span class="date">{{ appointment.date | date : "mediumDate" }}</span>
+        <span class="time">{{ appointment.time }}</span>
+        <span class="client">{{ appointment.clientName }}</span>
+      </div>
+      <button (click)="cancelAppointment(appointment.id)" class="delete-btn">
+        ×
+      </button>
+    </div>
+    }
+  </div>
+  }
+</div>
