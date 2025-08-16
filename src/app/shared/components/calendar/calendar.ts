@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { Component, OnInit, signal } from '@angular/core';
 import { Appointment, TimeSlot } from '../../interfaces/calendar';
 
+import { GoogleCalendarService } from '../../services/google-calendar';
+
 @Component({
   selector: 'app-appointment-calendar',
   templateUrl: './calendar.html',
@@ -152,8 +154,6 @@ export class AppointmentCalendarComponent implements OnInit {
     this.selectedTimeSlot.set(null);
     this.clientName.set('');
     // añadir a calendario google
-    // key=API_KEY
-    // AIzaSyClZNTHpsod7VIf4x6AHtZI_vCl1UK7lcQ
 
     alert(
       `Appointment booked successfully for ${this.clientName()} on ${this.selectedDate()?.toDateString()} at ${
