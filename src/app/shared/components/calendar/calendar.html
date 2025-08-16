@@ -3,7 +3,7 @@
     <h2>Appointment Calendar</h2>
     <div class="navigation">
       <button (click)="previousMonth()" class="nav-btn">‹</button>
-      <span class="month-year">{{ currentDate | date : "MMMM yyyy" }}</span>
+      <span class="month-year">{{ currentDate() | date : "MMMM yyyy" }}</span>
       <button (click)="nextMonth()" class="nav-btn">›</button>
     </div>
   </div>
@@ -12,13 +12,13 @@
     <!-- Calendar Grid -->
     <div class="calendar-grid">
       <div class="weekdays">
-        @for (item of weekDays; track $index) {
+        @for (item of weekDays(); track $index) {
         <div class="weekday">{{ item }}</div>
         }
       </div>
 
       <div class="days">
-        @for (day of calendarDays; track $index) {
+        @for (day of calendarDays(); track $index) {
         <div
           class="day"
           [class.other-month]="!day.currentMonth"
@@ -39,12 +39,12 @@
     </div>
 
     <!-- Time Slots Panel -->
-    @if (selectedDate) {
+    @if (selectedDate()) {
     <div class="time-slots-panel">
-      <h3>Available Times - {{ selectedDate | date : "mediumDate" }}</h3>
+      <h3>Available Times - {{ selectedDate() | date : "mediumDate" }}</h3>
 
       <div class="time-slots">
-        @for (slot of availableTimeSlots; track $index) {
+        @for (slot of availableTimeSlots(); track $index) {
         <div
           class="time-slot"
           [class.booked]="slot.booked"
@@ -62,12 +62,12 @@
       </div>
 
       <!-- Booking Form -->
-      @if (selectedTimeSlot) {
+      @if (selectedTimeSlot()) {
       <div class="booking-form">
         <h4>Book Appointment</h4>
         <p>
-          {{ selectedDate | date : "mediumDate" }} at
-          {{ selectedTimeSlot.time }}
+          {{ selectedDate() | date : "mediumDate" }} at
+          {{ selectedTimeSlot()!.time }}
         </p>
 
         <div class="form-group">
@@ -97,7 +97,7 @@
   </div>
 
   <!-- Appointments List -->
-  @if (appointments.length > 0) {
+  @if (appointments().length > 0) {
   <div class="appointments-list">
     <h3>Upcoming Appointments</h3>
     @for (appointment of upcomingAppointments; track $index) {
