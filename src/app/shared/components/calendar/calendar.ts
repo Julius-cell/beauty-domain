@@ -191,12 +191,20 @@ export class AppointmentCalendarComponent implements OnInit {
   }
 
   previousMonth() {
-    this.currentDate().setMonth(this.currentDate().getMonth() - 1);
+    this.currentDate.update((date) => {
+      const newDate = new Date(date);
+      newDate.setMonth(newDate.getMonth() - 1);
+      return newDate;
+    });
     this.generateCalendar();
   }
 
   nextMonth() {
-    this.currentDate().setMonth(this.currentDate().getMonth() + 1);
+    this.currentDate.update((date) => {
+      const newDate = new Date(date);
+      newDate.setMonth(newDate.getMonth() + 1);
+      return newDate;
+    });
     this.generateCalendar();
   }
 
